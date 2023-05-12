@@ -29,7 +29,7 @@ def guess_random_number(tries, start, stop):
 
         if user_guess == random_number:
 
-            print("You guessed it !!")
+            print("You guessed it right !!")
             break
         
         elif user_guess < random_number:
