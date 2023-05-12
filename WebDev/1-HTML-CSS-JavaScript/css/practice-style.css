@@ -1,0 +1,49 @@
+body {
+    background: yellow;
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+h1 {
+    color: red;
+    font: 32px Garamond, Helvetica, serif;
+    text-align: center;
+}
+
+h2 {
+    color: red;
+    font: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: left;
+}
+
+table {
+    width: 15%;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+thead {
+    text-align: left;
+    border-right: 1px solid;
+}
+
+th{
+    border: 1px solid;
+}
+
+tr{
+    border: 1px solid;
+}
+
+td{
+    text-align: left;
+    border: 1px solid;
+}
+
+label {
+    display: block;
+}
+
+#submit-btn {
+    display: block;
+}
