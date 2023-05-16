@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="bLatDRlu8NSG5QHOMVHu" name="Exercise1">
-        <mxGraphModel dx="1386" dy="560" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1082" dy="560" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -23,7 +23,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="KV1-XNBCIYXjns-FXti3" name="Exercise2">
-        <mxGraphModel dx="1386" dy="560" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1082" dy="560" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -112,6 +112,62 @@
                 </mxCell>
                 <mxCell id="VCItKjobIZ3YWqQ0Oiub-8" value="Book Title" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1D050B;" vertex="1" parent="1">
                     <mxGeometry x="400" y="30" width="120" height="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="8Lb6Jmo5ANRpIm6bCrbY" name="Music">
+        <mxGraphModel dx="1386" dy="560" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="Hcw4xnGATx1-Fi-pZLeM-1" value="Song" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1D050B;" vertex="1" parent="1">
+                    <mxGeometry x="190" y="120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Hcw4xnGATx1-Fi-pZLeM-2" value="Belongs to" style="rhombus;whiteSpace=wrap;html=1;fillColor=#1D050B;" vertex="1" parent="1">
+                    <mxGeometry x="210" y="240" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="Hcw4xnGATx1-Fi-pZLeM-3" value="Album" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1D050B;" vertex="1" parent="1">
+                    <mxGeometry x="190" y="400" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Hcw4xnGATx1-Fi-pZLeM-4" value="Title" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1D050B;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="110" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="Hcw4xnGATx1-Fi-pZLeM-5" value="Title" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1D050B;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="390" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="Hcw4xnGATx1-Fi-pZLeM-6" value="Length" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1D050B;" vertex="1" parent="1">
+                    <mxGeometry x="190" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="Hcw4xnGATx1-Fi-pZLeM-7" value="Written by" style="rhombus;whiteSpace=wrap;html=1;fillColor=#1D050B;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="110" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="Hcw4xnGATx1-Fi-pZLeM-8" value="Artist" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1D050B;" vertex="1" parent="1">
+                    <mxGeometry x="540" y="120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Hcw4xnGATx1-Fi-pZLeM-9" value="Name" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1D050B;" vertex="1" parent="1">
+                    <mxGeometry x="540" y="10" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="Hcw4xnGATx1-Fi-pZLeM-10" value="Bio" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1D050B;" vertex="1" parent="1">
+                    <mxGeometry x="720" y="110" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="Hcw4xnGATx1-Fi-pZLeM-26" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="Hcw4xnGATx1-Fi-pZLeM-5">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="140" y="430" as="sourcePoint"/>
+                        <mxPoint x="190" y="430" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Hcw4xnGATx1-Fi-pZLeM-27" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="Hcw4xnGATx1-Fi-pZLeM-3">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="250" y="320" as="sourcePoint"/>
+                        <mxPoint x="250" y="390" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Hcw4xnGATx1-Fi-pZLeM-28" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="249.5" y="180" as="sourcePoint"/>
+                        <mxPoint x="249.5" y="240" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
             </root>
         </mxGraphModel>
