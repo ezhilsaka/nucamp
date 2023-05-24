@@ -135,3 +135,9 @@ WHERE name = 'Metropolitan'
 
 DELETE FROM divisions
 WHERE name = 'Cosmopolitan';
+
+--select with alias
+
+SELECT author as book_author, title as book_title FROM books; -- actual column names are author and title 
+
+SELECT b.author as book_author, b.title as book_title FROM books b; 
