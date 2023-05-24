@@ -141,3 +141,21 @@ WHERE name = 'Cosmopolitan';
 SELECT author as book_author, title as book_title FROM books; -- actual column names are author and title 
 
 SELECT b.author as book_author, b.title as book_title FROM books b; 
+
+--count with distinct
+
+SELECT COUNT (DISTINCT genre) as genre_count FROM books; -- to count the distinct number of generes in table
+
+--GROUP BY
+
+SELECT genre, COUNT(*) as book_count FROM books GROUP BY genre; -- to count the number of books available for each genre
+
+--HAVING BY
+
+SELECT genere, COUNT(*) AS book_count
+FROM books
+GROUP BY genre
+HAVING(COUNT(*)) > 1; 
+
+
+
