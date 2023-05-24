@@ -86,3 +86,52 @@ ALTER TABLE event_purchases
 ADD CONSTRAINT fk_event_purchases_customers
 FOREIGN KEY (customer_id)
 REFERENCES customers;
+
+-- week 2 queries --
+
+INSERT INTO cars (year, make, model)
+VALUES (2020, 'Toyoto', 'Prius'); 
+
+DELETE FROM cars
+WHERE year IS NULL; 
+
+--insert query to insert more than one column in the same query. 
+--the division is a table with id and name column
+--the values for different rows should be delimited with a comma in the single query
+
+INSERT INTO divisions (name)
+VALUES ('Atlantic'),('Metropolitan'),('Pacific'),('Central');
+
+-- CC Data Manipulation with SQL
+
+CREATE TABLE divisions (
+	id SERIAL PRIMARY KEY,
+	name TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE teams (
+	id serial PRIMARY KEY,
+	city TEXT NOT NULL,
+	name TEXT NOT NULL UNIQUE,
+	home_color TEXT NOT NULL,
+	away_color TEXT,
+	division_id INTEGER
+); 
+
+ALTER TABLE teams
+ADD CONSTRAINT fk_division_id
+FOREIGN KEY (division_id)
+REFERENCES divisions
+ON DELETE SET NULL
+
+INSERT INTO divisions (name)
+VALUES ('Atlantic'),('Metropolitan'),('Pacific'),('Central');
+
+INSERT INTO teams (city, name, home_color, away_color, division_id)
+VALUES ('New York Islanders', 'Metropolitan', 'Royal blue', 'White', 2), ('Seattle Kraken', 'Pacific', 'Deep sea Blue', 'White', 3);
+
+UPDATE divisions SET name = 'Cosmopolitan'
+WHERE name = 'Metropolitan'
+
+DELETE FROM divisions
+WHERE name = 'Cosmopolitan';
