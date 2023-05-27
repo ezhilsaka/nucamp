@@ -235,3 +235,65 @@ EXCEPT
 SELECT DISTINCT name FROM departments d
 INNER JOIN students s
 ON s.major_department_id = d.id;
+
+--Subqueries 
+
+--EXISTS
+
+SELECT a.author FROM amazon_best_sellers a
+WHERE EXISTS (
+    SELECT * FROM president_books b WHERE b.president = a.author
+); 
+
+--IN
+
+SELECT a.author FROM amazon_best_sellers a
+WHERE a.author IN (
+    SELECT president FROM president_books 
+); 
+
+--NOT IN
+
+SELECT a.author FROM amazon_best_sellers a
+WHERE a.author NOT IN (
+    SELECT president FROM president_books 
+); 
+
+--ANY
+
+SELECT a.titile, a.year
+FROM amazon_best_sellers a
+WHERE a.year < ANY (
+    SELECT b.year FROM president_books b
+); 
+
+--ALL
+
+SELECT a.author FROM amazon_best_sellers a
+WHERE a.author > ALL (
+    SELECT b.president from president_books b
+)
+
+--WITH (To find out the duplicate last names in 2 tables and count of it)
+
+WITH all_names AS (
+	SELECT last_name FROM professors
+	UNION ALL
+	SELECT last_name FROM students
+)
+SELECT last_name, COUNT(*)
+FROM all_names
+GROUP BY last_name
+HAVING COUNT(*) > 1; 
+
+--WITH another example
+
+WITH people AS (
+	SELECT 'professor' AS occupation, first_name, last_name, department_id FROM professors
+	UNION ALL
+	SELECT 'student' AS occupation, first_name, last_name, major_department_id FROM students
+)
+SELECT occupation, first_name, last_name, d.code
+FROM people
+LEFT JOIN departments d
+ON department_id = d.id; 
