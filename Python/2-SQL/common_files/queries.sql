@@ -152,10 +152,86 @@ SELECT genre, COUNT(*) as book_count FROM books GROUP BY genre; -- to count the 
 
 --HAVING BY
 
-SELECT genere, COUNT(*) AS book_count
+SELECT genere, COUNT(*) AS book_count -- to filter the group by result set which is having count more than 1
 FROM books
 GROUP BY genre
 HAVING(COUNT(*)) > 1; 
 
+--Code Challenge: Aggregate Queries
+
+-- For each customer, list the customer_id and the order_date of their first order. Sort by customer_id.
+
+SELECT customer_id, MIN(order_date)
+FROM orders
+GROUP BY customer_id
+ORDER BY customer_id
+
+-- For each customer, list customer ID and the average freight cost of their orders; sort by average freight cost.
+
+SELECT customer_id, AVG(freight) AS avg_freight
+FROM orders
+GROUP BY customer_id  
+ORDER BY avg_freight;
 
 
+-- SET OPERATIONS
+
+--UNION
+
+SELECT title, president, year FROM president_books
+UNION
+SELECT title, author, year FROM amazon_best_sellers;
+
+--UNION ALL 
+
+SELECT title, president, year FROM president_books
+UNION ALL
+SELECT title, author, year FROM amazon_best_sellers;
+
+--INTERSECT
+
+SELECT title, author, year FROM amazon_best_sellers
+INTERSECT
+SELECT title, president AS author, year from president_books; 
+
+--EXCEPT
+
+SELECT title, author, year FROM amazon_best_sellers
+EXCEPT
+SELECT title, president AS author, year FROM president_books; 
+
+--INNER JOIN
+
+SELECT cc.name AS captical_city_name, c.name AS country_name
+FROM captial_cities cc
+INNER JOIN countries c
+ON cc.country_id = c.id
+
+-- LEFT JOIN
+
+SELECT c.name, o.dollar_amount_spent
+FROM customers c
+LEFT JOIN orders o
+ON o.customer_id = c.id
+
+--RIGHT JOIN
+
+SELECT c.name, o.dollar_amount_spent
+FROM customers c
+RIGHT JOIN orders o
+ON o.customer_id = c.id
+
+--FULL JOIN (same as union all)
+
+SELECT c.name, o.dollar_amount_spent
+FROM customers c
+FULL JOIN orders o
+ON o.customer_id = c.id
+
+--combining set operators and joins
+
+SELECT name FROM departments d
+EXCEPT
+SELECT DISTINCT name FROM departments d
+INNER JOIN students s
+ON s.major_department_id = d.id;
