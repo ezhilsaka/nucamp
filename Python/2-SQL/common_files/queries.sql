@@ -297,3 +297,11 @@ SELECT occupation, first_name, last_name, d.code
 FROM people
 LEFT JOIN departments d
 ON department_id = d.id; 
+
+--INSERT QUERY with 2 Select statement subqueries
+
+INSERT INTO employees_categories (employee_id, category_id)
+SELECT e.employee_id, c.category_id
+FROM employees e, categories c
+WHERE e.city = 'London'
+AND c.category_name = 'Dairy Products'; 
