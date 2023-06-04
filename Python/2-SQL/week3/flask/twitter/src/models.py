@@ -10,6 +10,17 @@ class User(db.Model):
     password = db.Column(db.String(128), nullable = False)
     tweets = db.relationship('Tweet', backref='user', cascade="all,delete")
 
+    def __init__(self, username: str, password: str):
+        
+        self.username = username
+        self.password = password
+    
+    def serialize(self):
+        return {
+            'id': self.id,
+            'username': self.username
+        }
+
 likes_table = db.Table(
     'likes',
     db.Column(
