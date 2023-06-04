@@ -56,4 +56,57 @@ def delete(id: int):
 
 @bp.route('/<int:id>', methods=['PATCH', 'PUT'])
 def update(id: int):
+    u = User.query.get_or_404(id)
     
+    if 'username' in request.json and 'password' in request.json:
+        username_from_request = request.json['username']
+        password_from_request = request.json['password']
+        if len(username_from_request) < 3 or len(password_from_request) < 8:
+            return abort(400)
+       
+        try:
+            u.username = username_from_request
+            u.password = scramble(password_from_request) 
+            db.session.commit() # execute update statement
+            return jsonify(u.serialize())
+        except:
+        # something went wrong :(
+            return jsonify(False)
+    
+    elif 'username' in request.json:
+        username_from_request = request.json['username']
+        if len(username_from_request) < 3:
+            return abort(400)
+        
+        try:
+            u.username = username_from_request
+            db.session.commit() # execute update statement
+            return jsonify(u.serialize())
+        except:
+        # something went wrong :(
+            return jsonify(False)
+    
+    elif 'password' in request.json:
+        password_from_request = request.json['password'] 
+        if len(password_from_request) < 8:
+            return abort(400)
+        
+        try:
+            u.password = scramble(password_from_request) 
+            db.session.commit() # execute update statement
+            return jsonify(u.serialize())
+        except:
+        # something went wrong :(
+            return jsonify(False)
+    
+    else:
+        return abort(400)
+
+@bp.route('/<int:id>/liked_tweets', methods=['GET'])
+def liked_tweets(id: int):
+    u = User.query.get_or_404(id)
+    result = []
+    for t in u.liked_tweets:
+        result.append(t.serialize())
+    return jsonify(result)
+
