@@ -1,7 +1,9 @@
 from flask import Blueprint, jsonify, abort, request
 from ..models import User, db, Tweet, likes_table
+import sqlalchemy
 import hashlib
 import secrets
+
 
 def scramble(password: str):
     """Hash and salt the given password"""
@@ -110,3 +112,54 @@ def liked_tweets(id: int):
         result.append(t.serialize())
     return jsonify(result)
 
+#Bonus Task 1
+
+@bp.route('/<int:id>/likes', methods=['POST'])
+def likes(id: int):
+    # req body must contain tweet_id
+    
+    if 'tweet_id' not in request.json:
+        return abort(400)
+    
+    tweet_id_from_request = request.json['tweet_id']
+    id_from_request = id
+    u = User.query.get_or_404(id_from_request)
+    t = Tweet.query.get_or_404(tweet_id_from_request)
+    
+    # insert likes
+    new_likes = {"user_id": id_from_request, "tweet_id": tweet_id_from_request}
+    insert_likes_query = likes_table.insert().values(new_likes)
+
+    try:
+        db.session.execute(insert_likes_query) 
+        db.session.commit() 
+        return jsonify(True)
+    except:
+    # something went wrong :(
+        return jsonify(False)
+   
+#Bonus Task 2
+
+@bp.route('/<int:userid>/likes/<int:tweetid>', methods=['DELETE'])
+def unlike(userid: int, tweetid: int):
+   
+    tweet_id_from_request = tweetid
+    id_from_request = userid
+    u = User.query.get_or_404(id_from_request)
+    t = Tweet.query.get_or_404(tweet_id_from_request)
+    
+    # delete likes
+    stmt = sqlalchemy.delete(likes_table).where(
+    sqlalchemy.and_(
+        likes_table.c.user_id == id_from_request,
+        likes_table.c.tweet_id == tweet_id_from_request
+    )
+)
+
+    try:
+        db.session.execute(stmt) 
+        db.session.commit() 
+        return jsonify(True)
+    except:
+    # something went wrong :(
+        return jsonify(False) 
