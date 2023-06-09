@@ -389,3 +389,39 @@ UPDATE employees SET salary = 80000 WHERE name = 'Alice';
 SELECT e.*, el.description, el.created_at
 FROM employees_log el
 JOIN employees e ON el.employee_id = e.id;
+
+-- Index syntax
+
+CREATE INDEX index_name ON table_name (column_name); 
+
+CREATE INDEX moma_works_btree_index ON moma_works(artist);
+
+DROP INDEX moma_works_btree_index;
+CREATE INDEX moma_works_hash_index ON moma_works USING HASH (artist);
+
+--default and non default indexes
+
+SELECT * FROM pg_indexes;
+
+SELECT tablename, indexname, indexdef FROM pg_indexes WHERE tablename NOT LIKE 'pg_%';
+
+-- EXPLAIN & EXPLAIN and ANALYZE
+
+EXPLAIN SELECT date_acquired FROM moma_works 
+WHERE date_acquired BETWEEN '1950-01-01' AND '1959-12-31';
+
+EXPLAIN ANALYZE SELECT date_acquired FROM moma_works 
+WHERE date_acquired BETWEEN '1950-01-01' AND '1959-12-31';
+
+--DB Adminstration
+
+--dump command options: docker exec pg_container pg_dump --help
+
+--ex: docker exec pg_container pg_dump --verbose --file moma_dump.sql moma
+
+--command to copy the dump: docker exec pg_container psql moma_copy -f moma_dump.sql
+
+
+
+
+
